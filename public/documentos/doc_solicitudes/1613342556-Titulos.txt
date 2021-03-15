@@ -1,0 +1,20 @@
+1.olvido Su Contraseña... ponerlo a funcionar......................OK
+2.cambiar logo de inicio por una casita............................OK
+3.rediseñar menu asi:
+
+crear una nueva opcio que se llame Archivo
+los menus deben contener informacion general....
+
+Debe conterner hojas de vida, 
+documentos contractuales, 
+manuales de funciones, 
+soportes de afiliacion,
+historias clinicas ocupacionales -> Sub clasificacion: Examenes Medicos->Ingreso,Periodico,Retiro; Accidente o Enfermedad Laboral->Informe,FURAT,Otros;,Afectaciones de salud de origen comun->incapacidades,Restricciones Laborales,Dictamenes de PCL,Otros, 
+Soportes de entrega de dotacion
+Procesos Disciplinarios-> Sub Categorias: Cada Proceso Tiene-> Citacion,Acta de descargos, Documento de Cierre,Recurso,Descion de Segunda Instancia 
+Vacaciones y licencias,
+Evaluaciones de desempeño,
+Documentos de Retiro-> Sub Categoria: constancia de terminacion, Planillas de Seg Social, Certificacion Laboral, Carta Retiro Cesantias, Otros.
+Certificaciones,
+Soportes de formacion,
+Politicas y Reglamentos,

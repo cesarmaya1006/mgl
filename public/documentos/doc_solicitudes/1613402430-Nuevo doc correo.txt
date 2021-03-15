@@ -1,0 +1,18 @@
+const [, setActualizaBoleta] = React.useState([]);
+    
+    const actualizaBoleta = async () =>{
+        axios({
+            method: 'put',
+            url: `http://127.0.0.1:8000/api/boletas/3`,
+            data: {
+                id_usuario: `${id}`
+            }
+          });
+          const data_d=  await fetch('http://127.0.0.1:8000/api/boletas')
+          const sinAsignacion =  await data_d.json()
+          setSinAsignacion(sinAsignacion)
+          const data=  await fetch(`http://127.0.0.1:8000/api/boletas/${id}`)
+          const boletas =  await data.json()
+          setBoletas(boletas)
+          setActualizaBoleta()
+    }

@@ -1,0 +1,49 @@
+import React, { useState } from 'react';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
+import Inicio from './componentes/inicio';
+import Asignacion from './componentes/asignacion';
+import axios from "axios";
+
+
+
+export default function App() {
+
+    const usersData = [{ tipo_identificacion: "", identificacion: "", nombres: "", apellidos: "", email: "", telefono: "" }]
+
+    const [users, setUsers] = useState(usersData);
+    const addUser = (user) => {
+        setUsers([...user])
+    }
+
+    return ( <Router>
+        <div className = "row d-flex justify-content-around" >
+            <div className = "col-10" >
+                <div className = "row" >
+                    <div className = "col-12 text-center" >
+                        <h1 > Prueba Técnica - Cesar Maya </h1>
+                    </div>
+                </div>
+            </div>
+            <hr/>
+            <br/>
+            <div className = "col-10" >
+                <Switch>
+                    <Route path = "/inicio/:id" >
+                        <Asignacion addUser ={addUser}/>
+                    </Route>
+                    <Route path = "/" exact >
+                        <Inicio />
+                    </Route>
+                </Switch>
+            </div>
+            </div>
+            </Router>
+    );
+}

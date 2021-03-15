@@ -74,6 +74,8 @@ class Tabla_Menu extends Seeder
             ['nombre' => 'Boletines Antiguos', 'menu_id' => '0', 'url' => 'admin/boletines-index', 'orden' => '8', 'icono' => 'fas fa-book'],
             // Menus padre MIs Consultas y Solicitudes
             ['nombre' => 'Consultas/Solicitudes', 'menu_id' => '0', 'url' => 'admin/consultas_solicitudes-index', 'orden' => '9', 'icono' => 'far fa-hand-paper'],
+            // Menus padre Diagnosticos
+            ['nombre' => 'Diagnosticos Judiciales', 'menu_id' => '0', 'url' => 'admin/diagnosticos-index', 'orden' => '10', 'icono' => 'fas fa-balance-scale'],
 
 
         ];

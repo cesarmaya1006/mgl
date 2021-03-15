@@ -66,7 +66,7 @@ class ProyectoController extends Controller
                                 new DateTime($tarea->fec_limite),
                                 null,
                                 [
-
+                                    'url' =>  route('proyecto-tareas-index', ['id' => $tarea->id]) ,
                                     'color' => $color,
                                     'textColor' => $textColor,
                                 ],

@@ -68,16 +68,15 @@ class HojaVidaController extends Controller
     {
         $nuevoUsuario['docutipos_id'] = $request['tipo_docu_id'];
         $nuevoUsuario['identificacion'] = $request['identificacion'];
-        $nuevoUsuario['nombres'] = strtolower(utf8_decode(($request['nombres'])));
-        $nuevoUsuario['apellidos'] = strtolower(utf8_decode(($request['apellidos'])));
-        $nuevoUsuario['email'] = strtolower(utf8_decode(($request['email'])));
+        $nuevoUsuario['nombres'] = $request['nombres'];
+        $nuevoUsuario['apellidos'] = $request['apellidos'];
+        $nuevoUsuario['email'] = $request['email'];
         $nuevoUsuario['telefono'] = $request['telefono'];
         $nuevoUsuario['password'] = bcrypt(utf8_encode($request['password']));
         $nuevoUsuario['camb_password'] = 1;
         $usuario = Usuario::create($nuevoUsuario);
         $roles['rol_id'] = 6;
         $usuario->roles()->sync($roles);
-
         $usuarios_t = Usuario::orderBy('id')->get();
         foreach ($usuarios_t as $item) {
             $usuario_f = $item;
@@ -90,8 +89,9 @@ class HojaVidaController extends Controller
         $nuevoEmpleado['vinculacion'] = date('Y-m-d');
         $nuevoEmpleado['estado'] = 1;
         if (isset($request['lider'])) {
-            $nuevoEmpleado['lider'] = $request['lider'];
+            $nuevoEmpleado['lider'] = 1;
         } else {
+            $nuevoEmpleado['lider'] = 0;
         }
         Empleado::create($nuevoEmpleado);
         return Redirect('admin/archivo-hojas_de_vida-index/' . $id)->with('mensaje', 'Empleado creado con exito');

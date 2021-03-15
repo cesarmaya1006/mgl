@@ -1,8 +1,8 @@
 #myVideo {
     position: fixed;
-    right: 0;
+    right: 1;
     bottom: 0;
-    min-width: 100%;
+    min-width: 102%;
     min-height: 100%;
     filter: blur(2px);
 }

@@ -128,7 +128,7 @@
                             <p>Tareas prox a vencer</p>
                         </div>
                         <div class="icon"><i class="fas fa-bell"></i></div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('proyecto-listado_tareas', ['id' => $empleado->id]) }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -140,7 +140,7 @@
                             <p>Tareas Vencidas</p>
                         </div>
                         <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
-                        <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('proyecto-listado_tareas', ['id' => $empleado->id]) }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

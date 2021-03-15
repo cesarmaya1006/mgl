@@ -385,8 +385,9 @@ Route::group(['middleware' => 'auth'], function () {
         Route::delete('archivo-hojas_de_vida/{id}/eliminarlaboralinformal', [HojaVidaController::class, 'eliminarlaboralinformal'])->name('hojas_de_vida-eliminarlaboralinformal');
         //.......................................................................................................................................
         //diagnosticos
-        // Permisos usuarios
-        Route::get('archivo-diagnosticos-index/{id}', [DiagnosticoController::class, 'index'])->name('diagnosticos-index');
+        Route::get('diagnosticos-index', [DiagnosticoController::class, 'index'])->name('diagnosticos-index');
+        Route::get('diagnosticos-crear', [DiagnosticoController::class, 'crear'])->name('diagnosticos-crear');
+        Route::post('diagnosticos-guardar', [DiagnosticoController::class, 'guardar'])->name('diagnosticos-guardar');
         // Clientes
         Route::get('proyectos_clientes-index/{id}', [ClienteController::class, 'index'])->name('proyecto_clientes-index');
         //--------------------------------------------------------------------------------

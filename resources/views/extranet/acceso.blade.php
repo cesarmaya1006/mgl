@@ -71,21 +71,6 @@
                                 su contrase&ntilde;a?</a>
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <form action="{{ route('logout') }}" method="post">
-                                @csrf
-                                <button type="submit" class="btn-accion-tabla nav-link mr-3 text-primary">
-                                    <i class="fas fa-sign-out-alt fa-2x"></i>
-                                    <span class="badge badge-danger navbar-badge">
-                                        <font style="vertical-align: inherit;">
-                                            <font style="vertical-align: inherit;">Salir</font>
-                                        </font>
-                                    </span>
-                                </button>
-                            </form>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

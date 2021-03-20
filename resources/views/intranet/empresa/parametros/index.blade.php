@@ -35,7 +35,7 @@
             <table class="table display">
                 <thead>
                     <tr>
-                        <th>Niveles <a
+                        <th>Areas <a
                                 href="{{ route('admin-param_hojas_de_vida-crear_nivel', ['id' => $empleado->empresa->id]) }}"
                                 class="btn-accion-tabla position-absolute end-0 mr-5 text-success" title="Nuevo Registro">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i></a></th>
@@ -54,7 +54,7 @@
             <table class="table display">
                 <thead>
                     <tr>
-                        <th>Areas <a
+                        <th>Niveles <a
                                 href="{{ route('admin-param_hojas_de_vida-crear_area', ['id' => $empleado->empresa->id]) }}"
                                 class="btn-accion-tabla position-absolute end-0 mr-5 text-success" title="Nuevo Registro">
                                 <i class="fa fa-plus-circle" aria-hidden="true"></i></a></th>

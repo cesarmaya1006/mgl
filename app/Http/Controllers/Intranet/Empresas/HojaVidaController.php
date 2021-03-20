@@ -21,6 +21,7 @@ use App\Models\Empresas\Idioma;
 use App\Models\Empresas\Municipio;
 use App\Models\Empresas\Pais;
 use App\Models\Empresas\Publicacion;
+use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Config;
@@ -38,7 +39,8 @@ class HojaVidaController extends Controller
     public function index($id)
     {
         $empresa = Empresa::findOrFail($id);
-        return view('intranet.empresa.archivo.hojas_de_vida.index', compact('empresa'));
+        $empleado = Empleado::findOrFail(session('id_usuario'));
+        return view('intranet.empresa.archivo.hojas_de_vida.index', compact('empresa', 'empleado'));
     }
 
     public function exportarExcel($id)
@@ -445,6 +447,23 @@ class HojaVidaController extends Controller
         } else {
             abort(404);
         }
+    }
+
+    public function generatePDF($id)
+    {
+        $empleado = Empleado::findOrFail($id);
+        $respuesta = $this->calcularTiempoLaboral($empleado->id);
+        $edad = Carbon::parse($empleado->fecha_nacimiento)->age;
+
+        $data = [
+            'empleado' => $empleado,
+            'respuesta' => $respuesta,
+            'edad' => $edad,
+        ];
+
+        $pdf = PDF::loadView('intranet.empresa.archivo.hojas_de_vida.exportar_pdf', $data);
+
+        return $pdf->download('Hoha de' . $empleado->usuario->nombres . '.pdf');
     }
     //+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-
 

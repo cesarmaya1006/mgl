@@ -15,6 +15,7 @@ class CrearEmpleados extends Migration
     {
         Schema::create('empleados', function (Blueprint $table) {
             $table->bigIncrements('id')->autoIncrement();
+            $table->integer('tipo')->default(1);
             $table->foreign('id')->references('id')->on('usuarios')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('empresa_id');
             $table->foreign('empresa_id', 'fk_empresas_empleado')->references('id')->on('empresas')->onDelete('restrict')->onUpdate('restrict');

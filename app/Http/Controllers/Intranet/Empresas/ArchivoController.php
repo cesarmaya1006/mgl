@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Intranet\Empresas;
 
 use App\Http\Controllers\Controller;
 use App\Models\Empresas\Empleado;
+use App\Models\Empresas\Opciones;
 use Illuminate\Http\Request;
 
 class ArchivoController extends Controller
@@ -16,7 +17,8 @@ class ArchivoController extends Controller
     public function index()
     {
         $empleado = Empleado::findOrFail(session('id_usuario'));
-        return view('intranet.empresa.archivo.index.index', compact('empleado'));
+        $opciones = Opciones::get();
+        return view('intranet.empresa.archivo.index.index', compact('empleado', 'opciones'));
     }
 
     /**

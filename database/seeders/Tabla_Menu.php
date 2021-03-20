@@ -67,7 +67,7 @@ class Tabla_Menu extends Seeder
             // Proyectos
             ['nombre' => 'Proyectos', 'menu_id' => '0', 'url' => 'admin/proyectos-index', 'orden' => '6', 'icono' => 'far fa-folder-open'],
             // Hojas de vida
-            ['nombre' => 'Mi hoja de Vida', 'menu_id' => '0', 'url' => 'admin/mi_hoja_de_vida-index', 'orden' => '7', 'icono' => 'far fa-address-card'],
+            //['nombre' => 'Mi hoja de Vida', 'menu_id' => '0', 'url' => 'admin/mi_hoja_de_vida-index', 'orden' => '7', 'icono' => 'far fa-address-card'],
             // Menus 2 nivel Parametros
             ['nombre' => 'Parametro H.V.', 'menu_id' => '3', 'url' => 'admin/param_hojas_de_vida-index', 'orden' => '4', 'icono' => 'far fa-id-card'],
             // Menus padre Boletines antiguos

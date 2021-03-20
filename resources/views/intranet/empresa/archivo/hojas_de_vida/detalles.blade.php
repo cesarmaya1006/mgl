@@ -27,6 +27,8 @@
                     <h5>Detalles Hoja de Vida</h5>
                 </div>
                 <div class="col-12 col-md-8 text-md-right text-lg-right pl-2 pr-md-5 pr-lg-5">
+                    <a href="{{ route('generatePDF', ['id' => $empleado->id]) }}" target="_blank"
+                        class="btn btn-dark btn-xs text-center pl-3 pr-3 mr-3"><i class="fas fa-book mr-2"></i> Exportar</a>
                     <a href="{{ route('hojas_de_vida-documentacion', ['id' => $empleado->id]) }}"
                         class="btn btn-dark btn-xs text-center pl-3 pr-3 mr-3"><i class="fas fa-book mr-2"></i> Listado
                         de documentos del trabajador por archivo</a>

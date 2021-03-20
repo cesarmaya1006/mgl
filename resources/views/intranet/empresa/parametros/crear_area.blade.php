@@ -27,7 +27,7 @@
     </div>
     <div class="row pl-4 pr-4">
         <div class="col-6">
-            <h5>Crear Area</h5>
+            <h5>Crear Nivel</h5>
         </div>
         <div class="col-6">
             <a href="{{ route('param_hojas_de_vida-index') }}"
@@ -43,7 +43,7 @@
                 @csrf
                 @method('post')
                 <div class="col-4 form-group">
-                    <label for="nivel_id">Nivel</label>
+                    <label for="nivel_id">Área</label>
                     <select class="form-control form-control-sm" name="nivel_id" id="nivel_id" required>
                         @foreach ($niveles as $nivel)
                             <option value="{{ $nivel->id }}">{{ $nivel->nivel }}</option>
@@ -51,7 +51,7 @@
                     </select>
                 </div>
                 <div class="col-4 form-group">
-                    <label for="area">Área</label>
+                    <label for="area">Nivel</label>
                     <input type="text" class="form-control form-control-sm" name="area" id="area" aria-describedby="helpId"
                         placeholder="" required>
                     <small id="helpId" class="form-text text-muted">Área</small>

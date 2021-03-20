@@ -18,7 +18,11 @@
 <!-- ************************************************************* -->
 <!-- Cuerpo hoja -->
 @section('cuerpo_pagina')
-
+    @if ($empleado->opciones->count() > 0)
+        <?php $indOpcion = 1; ?>
+    @else
+        <?php $indOpcion = 0; ?>
+    @endif
     <div class="card" style="border-top: 8px solid rgb(38, 160, 241);">
         @include('includes.error-form')
         @include('includes.mensaje')
@@ -29,23 +33,74 @@
                 </div>
             </div>
             <div class="row d-flex justify-content-around pt-3 mb-3 pl-2 pr-2">
-                @foreach ($empleado->opciones->sortBy('id') as $opcion)
-                    <div class="col-5 col-md-2 pl-2 pr-2">
-                        <div class="row">
-                            <div class="col-12 text-center pl-3 pr-3">
-                                <a href="{{ route($opcion->url, ['id' => $empleado->empresa_id]) }}"><img
-                                        class="img-fluid" src="{{ asset('imagenes/sistema/' . $opcion->imagen) }}"
-                                        style="max-width: 150px;width: 80%;"></a>
-                            </div>
-                            <div class="col-12 text-center pl-3 pr-3">
-                                <h6><strong>{{ $opcion->titulo }}</strong></h6>
-                            </div>
-                            <div class="col-12 text-center pl-3 pr-3" style="font-size: 0.8em;">
-                                <p class="text-justify">{{ $opcion->contenido }}</p>
+                @if ($indOpcion == 1)
+                    <?php $hojaVida = 0; ?>
+                    @foreach ($empleado->opciones->sortBy('id') as $opcion)
+                        @if ($opcion->id == 1)
+                            <?php $hojaVida = 1; ?>
+                        @endif
+                    @endforeach
+                    @if ($hojaVida == 0)
+                        @foreach ($opciones->sortBy('id') as $opcion)
+                            @if ($opcion->id == 1)
+                                <div class="col-5 col-md-2 pl-2 pr-2">
+                                    <div class="row">
+                                        <div class="col-12 text-center pl-3 pr-3">
+                                            <a href="{{ route($opcion->url, ['id' => $empleado->empresa_id]) }}"><img
+                                                    class="img-fluid"
+                                                    src="{{ asset('imagenes/sistema/' . $opcion->imagen) }}"
+                                                    style="max-width: 150px;width: 80%;"></a>
+                                        </div>
+                                        <div class="col-12 text-center pl-3 pr-3">
+                                            <h6><strong>{{ $opcion->titulo }}</strong></h6>
+                                        </div>
+                                        <div class="col-12 text-center pl-3 pr-3" style="font-size: 0.8em;">
+                                            <p class="text-justify">{{ $opcion->contenido }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endif
+                        @endforeach
+                    @endif
+                    @foreach ($empleado->opciones->sortBy('id') as $opcion)
+                        <div class="col-5 col-md-2 pl-2 pr-2">
+                            <div class="row">
+                                <div class="col-12 text-center pl-3 pr-3">
+                                    <a href="{{ route($opcion->url, ['id' => $empleado->empresa_id]) }}"><img
+                                            class="img-fluid" src="{{ asset('imagenes/sistema/' . $opcion->imagen) }}"
+                                            style="max-width: 150px;width: 80%;"></a>
+                                </div>
+                                <div class="col-12 text-center pl-3 pr-3">
+                                    <h6><strong>{{ $opcion->titulo }}</strong></h6>
+                                </div>
+                                <div class="col-12 text-center pl-3 pr-3" style="font-size: 0.8em;">
+                                    <p class="text-justify">{{ $opcion->contenido }}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                @else
+                    @foreach ($opciones->sortBy('id') as $opcion)
+                        @if ($opcion->id == 1)
+                            <div class="col-5 col-md-2 pl-2 pr-2">
+                                <div class="row">
+                                    <div class="col-12 text-center pl-3 pr-3">
+                                        <a href="{{ route($opcion->url, ['id' => $empleado->empresa_id]) }}"><img
+                                                class="img-fluid"
+                                                src="{{ asset('imagenes/sistema/' . $opcion->imagen) }}"
+                                                style="max-width: 150px;width: 80%;"></a>
+                                    </div>
+                                    <div class="col-12 text-center pl-3 pr-3">
+                                        <h6><strong>{{ $opcion->titulo }}</strong></h6>
+                                    </div>
+                                    <div class="col-12 text-center pl-3 pr-3" style="font-size: 0.8em;">
+                                        <p class="text-justify">{{ $opcion->contenido }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
             </div>
         </div>
     </div>

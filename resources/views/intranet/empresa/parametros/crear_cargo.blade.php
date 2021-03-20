@@ -43,18 +43,18 @@
                 @csrf
                 @method('post')
                 <div class="col-4 form-group">
-                    <label for="nivel_id">Nivel</label>
+                    <label for="nivel_id">Área</label>
                     <select class="form-control form-control-sm" id="nivel_id" data_url="{{ route('cargar_areas') }}">
-                        <option value="">Seleccione un nivel</option>
+                        <option value="">Seleccione un área</option>
                         @foreach ($niveles as $nivel)
                             <option value="{{ $nivel->id }}">{{ $nivel->nivel }}</option>
                         @endforeach
                     </select>
                 </div>
                 <div class="col-4 form-group">
-                    <label for="area_id">Area</label>
+                    <label for="area_id">Nivel</label>
                     <select class="form-control form-control-sm" name="area_id" id="area_id" required>
-                        <option value="">Seleccione un primero nivel</option>
+                        <option value="">Seleccione un primero área</option>
                     </select>
                 </div>
                 <div class="col-4 form-group">

@@ -27,7 +27,7 @@
     </div>
     <div class="row pl-4 pr-4">
         <div class="col-6">
-            <h5>Crear Nivel</h5>
+            <h5>Crear Área</h5>
         </div>
         <div class="col-6">
             <a href="{{ route('param_hojas_de_vida-index') }}"
@@ -44,13 +44,13 @@
                 @method('post')
                 <input type="hidden" name="empresa_id" value="{{ $id }}" required>
                 <div class="col-4 form-group">
-                    <label for="nivel">Nivel</label>
+                    <label for="nivel">Área</label>
                     <input type="text" class="form-control form-control-sm" name="nivel" id="nivel"
                         aria-describedby="helpId" placeholder="" required>
-                    <small id="helpId" class="form-text text-muted">Nivel</small>
+                    <small id="helpId" class="form-text text-muted">Área</small>
                 </div>
                 <div class="col-12 text-center form-group">
-                    <button type="submit" class="btn btn-primary btn-xs pl-4 pr-4">Crear Nivel</button>
+                    <button type="submit" class="btn btn-primary btn-xs pl-4 pr-4">Crear Área</button>
                 </div>
             </form>
         </div>

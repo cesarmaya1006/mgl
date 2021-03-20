@@ -51,10 +51,9 @@
                                 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
                                 <!-- Tipo Empleado Select text -->
                                 <div class="col-10 col-md-4 form-group">
-                                    <label class="requerido" for="nivel_id">Nivel</label>
+                                    <label class="requerido" for="nivel_id">Área</label>
                                     <select class="form-control form-control-sm" id="nivel_id"
                                         data_url="{{ route('cargar_areas') }}">
-                                        <option value="">Seleccione un nivel</option>
                                         @foreach ($niveles as $nivel)
                                             <option value="{{ $nivel->id }}"
                                                 {{ $empleado->cargo->area->nivel->id == $nivel->id ? 'selected' : '' }}>
@@ -65,7 +64,7 @@
                                 <!-- +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
                                 <!-- nivel Cargo Select text -->
                                 <div class="col-10 col-md-4 form-group">
-                                    <label class="requerido" for="area_id">Área</label>
+                                    <label class="requerido" for="area_id">Nivel</label>
                                     <select class="form-control form-control-sm" id="area_id"
                                         data_url="{{ route('cargar_cargos') }}">
                                         @foreach ($areas as $area)

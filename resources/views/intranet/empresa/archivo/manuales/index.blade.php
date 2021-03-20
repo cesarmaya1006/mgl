@@ -43,8 +43,8 @@
                     <table class="table table-striped table-bordered table-hover table-sm tabla-data display">
                         <thead>
                             <tr>
+                                <th class="text-center" scope="col">Área</th>
                                 <th class="text-center" scope="col">Nivel</th>
-                                <th class="text-center" scope="col">Area</th>
                                 <th class="text-center" scope="col">Cargo</th>
                                 <th class="text-center" scope="col">Manual</th>
                                 <th class="text-center" scope="col">Ultima Actualización</th>

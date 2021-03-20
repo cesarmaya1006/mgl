@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Intranet\Proyectos;
 
 use Acaronlex\LaravelCalendar\Facades\Calendar;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Usuario;
 use App\Models\Empresas\Empleado;
 use App\Models\Proyectos\Cliente;
 use App\Models\Proyectos\Proveedor;
@@ -22,56 +23,79 @@ class ProyectoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function interfaz()
+    public function interfaz($id_pro = 0, $id_usu = 0)
     {
-        $proyectos = Proyecto::with('empleados')->whereHas('empleados', function ($q) {
-            $q->where('empleado_id', session('id_usuario'));
-        })->get();
-        $empleado = Empleado::findOrFail(session('id_usuario'));
-        //===========================================================================
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+        $usuario = Usuario::findOrFail(session('id_usuario'));
+        $proyectos_all = Proyecto::get();
         $events = [];
+        //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
+        if ($id_pro != 0 && $id_usu != 0) {
+            $proyectos = Proyecto::with('empleados')->whereHas('empleados', function ($q) use ($id_usu) {
+                $q->where('empleado_id', $id_usu);
+            })->where('id', $id_pro)->get();
+            $empleado = Empleado::findOrFail($id_usu);
+        } else {
+            $empleado = Empleado::findOrFail(session('id_usuario'));
+            if ($usuario->empleado->tipo == 3 || $usuario->empleado->tipo == 2) {
+                //============================================================================
+                $proyectos = Proyecto::get();
+                //============================================================================
+
+            } else {
+                //============================================================================
+                $proyectos = Proyecto::with('empleados')->whereHas('empleados', function ($q) {
+                    $q->where('empleado_id', session('id_usuario'));
+                })->get();
+                //============================================================================
+            }
+        }
+
+        //===========================================================================
         foreach ($proyectos as $proyecto) {
             foreach ($proyecto->componentes as $componente) {
                 foreach ($componente->tareas as $tarea) {
                     if ($tarea->progreso < 100) {
-                        if ($empleado->lider) {
-                            if ($tarea->fec_limite < date('Y-m-d')) {
-                                $color = '#FF0000';
-                                $textColor = '#FFFFFF';
-                            } else {
-                                switch ($tarea->impacto) {
-                                    case 'Alto':
-                                        $color = 'darkred';
-                                        break;
-                                    case 'Medio-alto':
-                                        $color = 'lightsalmon';
-                                        break;
-                                    case 'Medio':
-                                        $color = 'orange';
-                                        break;
-                                    case 'Medio-bajo':
-                                        $color = 'yellowgreen';
-                                        break;
-                                    default:
-                                        $color = 'green';
-                                        break;
+                        if ($id_pro != 0 && $id_usu != 0) {
+                            if ($tarea->responsable_id == $id_usu) {
+                                if ($tarea->fec_limite < date('Y-m-d')) {
+                                    $color = '#FF0000';
+                                    $textColor = '#FFFFFF';
+                                } else {
+                                    switch ($tarea->impacto) {
+                                        case 'Alto':
+                                            $color = 'darkred';
+                                            break;
+                                        case 'Medio-alto':
+                                            $color = 'lightsalmon';
+                                            break;
+                                        case 'Medio':
+                                            $color = 'orange';
+                                            break;
+                                        case 'Medio-bajo':
+                                            $color = 'yellowgreen';
+                                            break;
+                                        default:
+                                            $color = 'green';
+                                            break;
+                                    }
+                                    $textColor = '#FFFFFF';
                                 }
-                                $textColor = '#FFFFFF';
+
+                                $events[] = Calendar::event(
+                                    $tarea->titulo . ' - ' . $tarea->responsable->usuario->nombres . ' ' . $tarea->responsable->usuario->apellidos,
+                                    true,
+                                    new DateTime($tarea->fec_creacion),
+                                    new DateTime($tarea->fec_limite),
+                                    null,
+                                    [
+
+                                        'color' => $color,
+                                        'textColor' => $textColor,
+                                    ],
+
+                                );
                             }
-
-                            $events[] = Calendar::event(
-                                $tarea->titulo . ' - Responsable: ' . $tarea->responsable->usuario->nombres . ' ' . $tarea->responsable->usuario->apellidos,
-                                true,
-                                new DateTime($tarea->fec_creacion),
-                                new DateTime($tarea->fec_limite),
-                                null,
-                                [
-                                    'url' =>  route('proyecto-tareas-index', ['id' => $tarea->id]) ,
-                                    'color' => $color,
-                                    'textColor' => $textColor,
-                                ],
-
-                            );
                         } else {
                             if ($tarea->responsable_id == session('id_usuario')) {
                                 if ($tarea->fec_limite < date('Y-m-d')) {
@@ -126,11 +150,19 @@ class ProyectoController extends Controller
             'headerToolbar' => [
                 'end' => 'today prev,next dayGridMonth timeGridWeek timeGridDay'
             ]
-        ]);;
+        ]);
+        $empleado2 = Empleado::findOrFail(session('id_usuario'));
         //===========================================================================
-        return view('intranet.proyectos.proyecto.index', compact('proyectos', 'empleado', 'calendar'));
+        return view('intranet.proyectos.proyecto.index', compact('proyectos', 'empleado', 'calendar', 'proyectos_all', 'empleado2'));
     }
 
+    public function cargar_usuarios_proy(Request $request)
+    {
+        if ($request->ajax()) {
+            $id = $_GET['id'];
+            return Proyecto::with('empleados', 'empleados.usuario')->findOrFail($id);
+        }
+    }
     /**
      * Show the form for creating a new resource.
      *

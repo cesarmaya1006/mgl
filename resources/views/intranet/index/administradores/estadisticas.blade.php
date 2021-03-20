@@ -6,19 +6,17 @@
     <div class="col-11">
         <section class="content" style="height: auto !important; min-height: 0px !important;">
             <!-- Small boxes (Stat box) -->
-            <div class="row d-flex justify-content-around">
+            <div class="row">
                 <div class="col-lg-3 col-xs-6">
                     <!-- small box -->
                     <div class="small-box bg-teal">
                         <div class="inner">
-                            <h3 style="font-size: 5em;">{{ $procesos->where('estado_proceso_id', 1)->count() }}</h3>
-                            <p style="font-size: 2em;"> <strong>Activos</strong></p>
+                            <h3>{{ $procesos->where('estado_proceso_id', 1)->count() }}</h3>
+                            <p>Activos</p>
                         </div>
-                        <div class="icon">
-                            <i class="far fa-check-circle" style="color: dodgerblue"></i>
-                        </div>
-                        <a href="{{ route('admin-procesos-index') }}" class="small-box-footer">More info <i
-                                class="fa fa-arrow-circle-right"></i></a>
+                        <div class="icon"><i class="fas fa-cogs"></i></div>
+                        <a href="{{ route('admin-procesos-index') }}" class="small-box-footer">Mas
+                            info <i class="far fa-check-circle" style="color: dodgerblue"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -26,15 +24,14 @@
                     <!-- small box -->
                     <div class="small-box bg-orange">
                         <div class="inner">
-                            <h3 style="font-size: 5em;">
+                            <h3>
                                 {{ $procesos->where('estado_notifi', 'Sin Notificar')->count() }}</h3>
-                            <p style="font-size: 2em;"> <strong>Sin Notificar</strong></p>
+                            <p>Sin Notificar</p>
                         </div>
-                        <div class="icon">
-                            <i class="fas fa-minus-circle" style="color: rgba(177, 51, 51, 0.801)"></i>
+                        <div class="icon"><i class="fas fa-minus-circle" style="color: rgba(177, 51, 51, 0.801)"></i>
                         </div>
-                        <a href="{{ route('admin-procesos-index') }}" class="small-box-footer">More info <i
-                                class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('admin-procesos-index') }}" class="small-box-footer">More
+                            info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -47,12 +44,10 @@
                             $procesos->fallo_3era == 'A Favor';
                             }); ?>
 
-                            <h3 style="font-size: 5em;">{{ $procesos_apo->count() }}</h3>
-                            <p style="font-size: 2em;"> <strong>Fallo a favor</strong></p>
+                            <h3>{{ $procesos_apo->count() }}</h3>
+                            <p>Fallo a favor</p>
                         </div>
-                        <div class="icon">
-                            <i class="far fa-check-square" style="color: rgb(255, 251, 0)"></i>
-                        </div>
+                        <div class="icon"><i class="far fa-check-square" style="color: rgb(255, 251, 0)"></i></div>
                         <a href="{{ route('admin-procesos-index') }}" class="small-box-footer">More info <i
                                 class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -69,12 +64,10 @@
                             $procesos->fallo_3era == 'En Contra';
                             });
                             ?>
-                            <h3 style="font-size: 5em;">{{ $procesos_apo->count() }}</h3>
-                            <p style="font-size: 2em;"> <strong>Fallo en Contra</strong></p>
+                            <h3>{{ $procesos_apo->count() }}</h3>
+                            <p>Fallo en Contra</p>
                         </div>
-                        <div class="icon">
-                            <i class="far fa-minus-square" style="color: white;"></i>
-                        </div>
+                        <div class="icon"><i class="far fa-minus-square" style="color: white;"></i></div>
                         <a href="{{ route('admin-procesos-index') }}" class="small-box-footer">More info <i
                                 class="fa fa-arrow-circle-right"></i></a>
                     </div>

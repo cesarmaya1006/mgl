@@ -66,8 +66,7 @@
                             <?php $porcVenc = ($diasGestionTarea * 100) / $diasTotalTarea; ?>
                             @if ($porcVenc > 80 || $diasTotalTarea - $diasGestionTarea < 3) <?php $tareasProx++; ?>
                             @else
-                                            <?php $tareasVige++; ?> @endif
-                                @endif
+                                                                                                                                                            <?php $tareasVige++; ?> @endif @endif
                             @else
                                 @if ($tarea->responsable_id == session('id_usuario'))
                                     @if ($tarea->fec_limite < date('Y-m-d'))
@@ -128,7 +127,8 @@
                             <p>Tareas prox a vencer</p>
                         </div>
                         <div class="icon"><i class="fas fa-bell"></i></div>
-                        <a href="{{ route('proyecto-listado_tareas', ['id' => $empleado->id]) }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('proyecto-listado_tareas', ['id' => $empleado->id]) }}"
+                            class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -140,7 +140,8 @@
                             <p>Tareas Vencidas</p>
                         </div>
                         <div class="icon"><i class="fas fa-exclamation-triangle"></i></div>
-                        <a href="{{ route('proyecto-listado_tareas', ['id' => $empleado->id]) }}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="{{ route('proyecto-listado_tareas', ['id' => $empleado->id]) }}"
+                            class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -260,8 +261,34 @@
                 <div class="col-12 col-md-10">
                     <h5>Calendario de Tareas</h5>
                 </div>
+                @if ($empleado2->tipo > 1)
+                    <div class="col-12 col-md-10">
+                        <div class="row">
+                            <div class="col-12 col-md-3 form-group">
+                                <label for="proyecto">Proyecto</label>
+                                <select id="proyecto" name="proyecto" class="form-control form-control-sm"
+                                    data_url="{{ route('proyecto-cargar_usuarios_proy') }}">
+                                    <option value="">Elija un proyecto</option>
+                                    @foreach ($proyectos_all as $proyecto)
+                                        <option value="{{ $proyecto->id }}">{{ $proyecto->titulo }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-3 form-group">
+                                <label for="usuarios">Miembros del Equipo</label>
+                                <select id="usuarios" name="usuarios" class="form-control form-control-sm">
+                                    <option value="">Elija priemero un proyecto</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-md-3 form-group d-flex align-items-end">
+                                <button class="btn btn-primary btn-xs btn-sombra pl-4 pr-4 ml-md-4" id="cargar_tareas"
+                                    data_url="{{ route('proyecto-interfaz') }}">Cargar
+                                    Tareas</button>
+                            </div>
+                        </div>
+                    </div>
+                @endif
                 <div class="col-12 col-md-10">
-                    <!-- <div id='calendar'></div> -->
                     {!! $calendar->calendar() !!}
                 </div>
             </div>

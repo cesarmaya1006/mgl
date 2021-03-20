@@ -354,6 +354,7 @@ Route::group(['middleware' => 'auth'], function () {
         Route::put('archivo-hojas_de_vida/{id}/guardar-infemp', [HojaVidaController::class, 'guardar_info_empleado'])->name('hojas_de_vida-guardar-infemp');
         Route::get('hv_cargar_municipios', [HojaVidaController::class, 'hv_cargar_municipios'])->name('hv_cargar_municipios');
         Route::get('archivo-hojas_de_vida/{id}/calcularTiempoLaboral', [HojaVidaController::class, 'calcularTiempoLaboral'])->name('hojas_de_vida-calcularTiempoLaboral');
+        Route::get('generate-pdf/{id}', [HojaVidaController::class, 'generatePDF'])->name('generatePDF');
         //-----Doc Hojas de vida
         //.......................................................................................................................................
         Route::get('archivo-hojas_de_vida/{id}/edubasica', [HojaVidaController::class, 'edubasica'])->name('hojas_de_vida-edubasica');
@@ -396,13 +397,14 @@ Route::group(['middleware' => 'auth'], function () {
         // Rutas Proyectos
         //--------------------------------------------------------------------------------
         // Proyectos interfaz
-        Route::get('proyectos-index', [ProyectoController::class, 'interfaz'])->name('proyecto-interfaz');
+        Route::get('proyectos-index/{id_pro?}/{id_usu?}', [ProyectoController::class, 'interfaz'])->name('proyecto-interfaz');
         Route::get('proyectos-crear', [ProyectoController::class, 'crear'])->name('proyecto-crear');
         Route::post('proyectos', [ProyectoController::class, 'guardar'])->name('proyecto-guardar');
         Route::get('proyectos/{id}/gestion-inter', [ProyectoController::class, 'gestion_inter'])->name('proyecto-gestion-inter');
         Route::get('proyectos/{id}/gestion', [ProyectoController::class, 'gestion'])->name('proyecto-gestion');
         Route::get('proyectos/{id}/listado_proy', [ProyectoController::class, 'listado_proy'])->name('proyecto-listado_proy');
         Route::get('proyectos/{id}/listado_tareas', [ProyectoController::class, 'listado_tareas'])->name('proyecto-listado_tareas');
+        Route::get('proyectos/cargar_usuarios_proy', [ProyectoController::class, 'cargar_usuarios_proy'])->name('proyecto-cargar_usuarios_proy');
         // Componentes
         Route::get('proyectos-componente/{id}/crear', [ComponenteController::class, 'crear'])->name('proyecto-componente-crear');
         Route::post('proyectos-componente/{id}/guardar', [ComponenteController::class, 'guardar'])->name('proyecto-componente-guardar');

@@ -13,14 +13,14 @@ $(document).ready(function() {
                 if (nivel_id != '') {
                     console.log(respuesta);
                     respuesta_html = '';
-                    respuesta_html += '<option value="">Elija un área</option>';
+                    respuesta_html += '<option value="">Elija un nivel</option>';
                     $.each(respuesta, function(index, item) {
                         respuesta_html += '<option value="' + item['id'] + '">' + item['area'] + '</option>';
                     });
                     $('#area_id').html(respuesta_html);
                 } else {
                     respuesta_html = '';
-                    respuesta_html += '<option value="">Seleccione un nivel</option>';
+                    respuesta_html += '<option value="">Seleccione un área</option>';
                     $('#area_id').html(respuesta_html);
                 }
             },

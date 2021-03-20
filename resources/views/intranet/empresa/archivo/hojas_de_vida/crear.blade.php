@@ -45,7 +45,7 @@
                                 Líder
                             </label>
                         </div>
-                        <div class="col-3 form-group">
+                        <div class="col-12 col-md-2 form-group">
                             <label for="nivel_id">Nivel</label>
                             <select class="form-control form-control-sm" id="nivel_id"
                                 data_url="{{ route('cargar_areas') }}">
@@ -55,17 +55,25 @@
                                 @endforeach
                             </select>
                         </div>
-                        <div class="col-4 form-group">
+                        <div class="col-12 col-md-3 form-group">
                             <label for="area_id">Área</label>
                             <select class="form-control form-control-sm" id="area_id"
                                 data_url="{{ route('cargar_cargos') }}">
                                 <option value="">Seleccione un primero nivel</option>
                             </select>
                         </div>
-                        <div class="col-4 form-group">
+                        <div class="col-12 col-md-3 form-group">
                             <label for="hv_cargo_id">Cargo</label>
                             <select class="form-control form-control-sm" name="hv_cargo_id" id="hv_cargo_id" required>
                                 <option value="">Seleccione primero un área</option>
+                            </select>
+                        </div>
+                        <div class="col-12 col-md-3 form-group">
+                            <label for="tipo">Tipo</label>
+                            <select class="form-control form-control-sm" name="tipo" id="tipo" required>
+                                <option value="1">Empleado</option>
+                                <option value="2">Administrador</option>
+                                <option value="3">Super-Administrador</option>
                             </select>
                         </div>
                         <div class="col-3 col-md-1 form-group">

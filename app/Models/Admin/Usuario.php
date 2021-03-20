@@ -2,6 +2,7 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Empresas\Empleado;
 use App\Models\Empresas\Solicitud;
 use App\Models\Mgl\Apoderado;
 use App\Models\Mgl\Asistente;
@@ -57,6 +58,13 @@ class Usuario extends Authenticatable
     {
         return $this->hasMany(SolicitudGestion::class, 'usuario_id', 'id');
     }
+    //----------------------------------------------------------------------------------
+    public function empleado()
+    {
+        return $this->hasOne(Empleado::class, 'id');
+    }
+    //----------------------------------------------------------------------------------
+
     //==================================================================================
     public function setSession($roles)
     {

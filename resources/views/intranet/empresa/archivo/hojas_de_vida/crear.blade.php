@@ -46,7 +46,7 @@
                             </label>
                         </div>
                         <div class="col-12 col-md-2 form-group">
-                            <label for="nivel_id">Nivel</label>
+                            <label for="nivel_id">Área</label>
                             <select class="form-control form-control-sm" id="nivel_id"
                                 data_url="{{ route('cargar_areas') }}">
                                 <option value="">Seleccione un nivel</option>
@@ -56,7 +56,7 @@
                             </select>
                         </div>
                         <div class="col-12 col-md-3 form-group">
-                            <label for="area_id">Área</label>
+                            <label for="area_id">Nivel</label>
                             <select class="form-control form-control-sm" id="area_id"
                                 data_url="{{ route('cargar_cargos') }}">
                                 <option value="">Seleccione un primero nivel</option>
@@ -71,7 +71,7 @@
                         <div class="col-12 col-md-3 form-group">
                             <label for="tipo">Tipo</label>
                             <select class="form-control form-control-sm" name="tipo" id="tipo" required>
-                                <option value="1">Empleado</option>
+                                <option value="1">Colaborador</option>
                                 <option value="2">Administrador</option>
                                 <option value="3">Super-Administrador</option>
                             </select>

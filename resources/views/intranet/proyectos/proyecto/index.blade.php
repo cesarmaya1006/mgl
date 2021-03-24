@@ -66,7 +66,7 @@
                             <?php $porcVenc = ($diasGestionTarea * 100) / $diasTotalTarea; ?>
                             @if ($porcVenc > 80 || $diasTotalTarea - $diasGestionTarea < 3) <?php $tareasProx++; ?>
                             @else
-                                                                                                                                                            <?php $tareasVige++; ?> @endif @endif
+                                                                                                                                                                <?php $tareasVige++; ?> @endif @endif
                             @else
                                 @if ($tarea->responsable_id == session('id_usuario'))
                                     @if ($tarea->fec_limite < date('Y-m-d'))
@@ -277,7 +277,7 @@
                             <div class="col-12 col-md-3 form-group">
                                 <label for="usuarios">Miembros del Equipo</label>
                                 <select id="usuarios" name="usuarios" class="form-control form-control-sm">
-                                    <option value="">Elija priemero un proyecto</option>
+                                    <option value="">Elija primero un proyecto</option>
                                 </select>
                             </div>
                             <div class="col-12 col-md-3 form-group d-flex align-items-end">

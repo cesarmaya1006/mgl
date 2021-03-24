@@ -30,11 +30,13 @@
             <h5>Diagnosticos</h5>
         </div>
         <div class="col-12 col-md-6 mb-3">
-            <a href="{{ route('diagnosticos-crear') }}"
-                class="btn btn-info btn-sombra btn-xs pl-4 pr-4 float-right mr-4">
-                <i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>
-                Agregar Diagnostico
-            </a>
+            @if (session('rol_id') < 5)
+                <a href="{{ route('diagnosticos-crear') }}"
+                    class="btn btn-info btn-sombra btn-xs pl-4 pr-4 float-right mr-4">
+                    <i class="fa fa-plus-circle mr-2" aria-hidden="true"></i>
+                    Agregar Diagnostico
+                </a>
+            @endif
         </div>
     </div>
     <hr>
@@ -45,8 +47,8 @@
                     <tr>
                         <th class="text-center">Id</th>
                         <th>Fecha</th>
-                        @if (session('rol_id')<5)
-                        <th>Empresa</th>
+                        @if (session('rol_id') < 5)
+                            <th>Empresa</th>
                         @endif
                         <th>Título</th>
                         <th>Documento</th>
@@ -54,15 +56,16 @@
                 </thead>
                 <tbody>
                     @foreach ($diagnosticos as $diagnostico)
-                    <tr>
-                        <td>{{$diagnostico->id}}</td>
-                        <td>{{$diagnostico->fec_creacion}}</td>
-                        @if (session('rol_id')<5)
-                        <td>{{$diagnostico->empresa->nombre}}</td>
-                        @endif
-                        <td>{{$diagnostico->titulo}}</td>
-                        <td><a href="{{asset('documentos/doc_solicitudes/'.$diagnostico->documento)}}" target="_blank" rel="noopener noreferrer">{{$diagnostico->nombre}}</a></td>
-                    </tr>
+                        <tr>
+                            <td>{{ $diagnostico->id }}</td>
+                            <td>{{ $diagnostico->fec_creacion }}</td>
+                            @if (session('rol_id') < 5)
+                                <td>{{ $diagnostico->empresa->nombre }}</td>
+                            @endif
+                            <td>{{ $diagnostico->titulo }}</td>
+                            <td><a href="{{ asset('documentos/doc_solicitudes/' . $diagnostico->documento) }}" target="_blank"
+                                    rel="noopener noreferrer">{{ $diagnostico->nombre }}</a></td>
+                        </tr>
                     @endforeach
                 </tbody>
             </table>
